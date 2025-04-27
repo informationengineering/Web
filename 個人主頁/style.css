@@ -1,0 +1,273 @@
+/* ========================= */
+/* 全域變數定義               */
+/* ========================= */
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0056b3;
+  --secondary-color: #e7e7e18f;
+  --text-color: #333;
+  --light-text: #666;
+  --bg-color: #ffffff;
+  --sidebar-bg: #f0f0f0;
+  --photo-bg: #a09b9b;
+  --photo-hover: #8a8787;
+  --border-color: #ccc;
+  --border-radius: 10px;
+  --shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+/* ========================= */
+/* 全域重置與基本樣式         */
+/* ========================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  border: 50px solid var(--secondary-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  line-height: 1.6;
+  position: relative; /* 新增：為絕對定位子元素建立參考 */
+}
+
+/* ========================= */
+/* 包裹容器                   */
+/* ========================= */
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========================= */
+/* 頂部區域 - 頭部            */
+/* ========================= */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 100px;
+  margin-bottom: 0;
+  flex-wrap: wrap;
+  padding-top: 40px; /* 新增：為固定網站名預留空間 */
+}
+
+/* 側邊欄／網站名稱 - 修改為固定定位 */
+.sidebar {
+  position: fixed; /* 改為固定定位 */
+  top: 0; /* 貼齊視窗頂部 */
+  left: 0; /* 貼齊視窗左側 */
+  width: 120px;
+  background-color: var(--sidebar-bg);
+  padding: 20px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0; /* 只保留右側圓角 */
+  transition: var(--transition);
+  z-index: 1000; /* 確保在最上層 */
+  margin: 20px 0 0 20px; /* 對齊body邊框內緣 */
+}
+
+.sidebar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 搜尋區 */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto; 
+  margin-top: -20px;
+}
+
+
+.search-bar input[type="text"] {
+  
+  width: 300px;
+  padding: 8px 15px 8px 35px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23666666"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 0 0 1.48-5.34c-.47-2.78-2.79-5-5.59-5.34a6.505 6.505 0 0 0-7.27 7.27c.34 2.8 2.56 5.12 5.34 5.59a6.5 6.5 0 0 0 5.34-1.48l.27.28v.79l4.25 4.25c.41.41 1.08.41 1.49 0 .41-.41.41-1.08 0-1.49L15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>');
+  background-size: 16px;
+  background-position: 10px center;
+  background-repeat: no-repeat;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+.search-bar input[type="text"]:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+
+/* ========================= */
+/* 主要內容區域                */
+/* ========================= */
+.main {
+  flex: 1;
+  padding: 20px;
+}
+
+/* ========================= */
+/* 個人資料區塊               */
+/* ========================= */
+.profile {
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  justify-content: center;
+  transform: translateX(-50px);
+  margin-top: 20px;
+}
+
+/* 照片 */
+.photo {
+  width: 150px;
+  height: 200px;
+  background-color: var(--photo-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--light-text);
+  border-radius: calc(var(--border-radius) - 2px);
+  overflow: hidden;
+  position: relative;
+  transition: var(--transition);
+}
+
+.photo:hover {
+  background-color: var(--photo-hover);
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
+.photo::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.photo:hover::after {
+  opacity: 1;
+}
+
+/* 個人資訊 */
+.info {
+  flex: 1;
+  max-width: 600px;
+}
+
+.info h2 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+.info p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--light-text);
+}
+
+/* ========================= */
+/* 響應式設計                 */
+/* ========================= */
+@media (max-width: 900px) {
+  .header {
+      gap: 40px;
+  }
+
+  .profile {
+      transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+      padding: 20px;
+      width: 95%;
+      border-width: 15px; /* 調整邊框厚度 */
+  }
+
+  .header {
+      flex-direction: column;
+      gap: 20px;
+      padding-top: 60px; /* 增加預留空間 */
+  }
+
+  .sidebar {
+      width: 100%;
+      height: 60px;
+      padding: 15px;
+      border-radius: 0;
+      margin: 15px 0 0 0; /* 調整對齊 */
+  }
+
+  .search-bar {
+      width: 100%;
+      max-width: 100%;
+  }
+
+  .profile {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+  }
+
+  .photo {
+      width: 120px;
+      height: 160px;
+  }
+
+  .info {
+      text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+      padding: 15px;
+      width: 100%;
+      border: none;
+      border-radius: 0;
+  }
+
+  .sidebar {
+      margin: 0; /* 移除邊距 */
+  }
+
+  .search-bar input[type="text"] {
+      min-width: 150px;
+  }
+}
+
+
