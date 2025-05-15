@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <!--lang="zh-Hant"：告訴瀏覽器和搜尋引擎，「這個網站是繁體中文」的內容，
+有助於SEO和無障礙輔助技術（像是語音朗讀器）。
+-->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>交友卡片</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>交友平台</h1>
+      <input type="text" id="searchInput" placeholder="搜尋名字或介紹..." />
+    </header>
+
+    <main>
+      <div class="card-container" id="cardContainer">
+        <!--id="cardContainer"：給 JavaScript 用，之後可以針對這個區塊操作-->
+
+        <a href="profile.html?id=1">
+          <div class="profile-card">
+            <img src="小美.jpg" alt="小美的大頭照" />
+            <h2>小美</h2>
+            <p class="gender">性別：女</p>
+            <p class="description">愛好旅行、喜歡貓咪、喜歡甜點。</p>
+          </div>
+        </a>
+
+        <a href="profile.html?id=2">
+          <div class="profile-card">
+            <img src="小明.jpg" alt="小明的大頭照" />
+            <h2>小明</h2>
+            <p class="gender">性別：男</p>
+            <p class="description">熱愛籃球、喜歡科技新知、擅長烹飪。</p>
+          </div>
+        </a>
+
+        <a href="profile.html?id=3">
+          <div class="profile-card">
+            <img src="小華.jpg" alt="小華的大頭照" />
+            <h2>小華</h2>
+            <p class="gender">性別：男</p>
+            <p class="description">愛攝影、熱愛健身、旅行愛好者。</p>
+          </div>
+        </a>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
