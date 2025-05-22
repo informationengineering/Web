@@ -1,0 +1,44 @@
+.main {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.profile {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(106, 13, 173, 0.2);
+  padding: 20px;
+  width: 700px; /* 改寬一點適合左右排列 */
+  display: flex; /* 讓圖片和介紹左右排列 */
+  gap: 20px; /* 兩邊留空間 */
+  align-items: flex-start;
+  text-align: left; /* 文字靠左 */
+}
+
+.profile img {
+  width: 300px; /* 固定圖片寬度 */
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 0; /* 取消下方 margin */
+  flex-shrink: 0; /* 防止圖片縮小 */
+}
+
+.profile .info {
+  flex-grow: 1; /* 介紹區域撐滿剩餘空間 */
+  display: flex;
+  flex-direction: column;
+}
+
+.profile h2 {
+  font-size: 26px;
+  color: #384aa5;
+  margin-bottom: 10px;
+}
+
+.profile p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.5;
+}
